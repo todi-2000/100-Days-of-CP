@@ -1,4 +1,4 @@
-// Question Link:
+// Question Link: 
 #include<bits/stdc++.h>
 #include<cmath>
 #include<algorithm>
