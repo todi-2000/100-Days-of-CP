@@ -1,4 +1,5 @@
 //Question: given different coins of different denomination and a sum , you have to tell the minimum number of coins needed to make that total sum or state that it is not possible.
+// Time Complexity: O(N*M) & Space Complexity: O(N*M)
 #include<bits/stdc++.h>
 #include<cmath>
 #include<algorithm>
