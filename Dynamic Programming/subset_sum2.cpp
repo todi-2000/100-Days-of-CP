@@ -1,6 +1,6 @@
-//Question: given different coins of different denomination and a sum , 
-// you have to tell the minimum number of coins needed to make that total sum or state that it is not possible and also print the coins.
-// Time Complexity: O(N*M) & Space Complexity: O(M)
+//Question: find the subset whose sum of elements is given sum 
+// problem using dynamic programming in O(N* M) time & O(N*M) space
+//Time Complexity: O(N*M) & Space Complexity: O(M)
 
 #include<bits/stdc++.h>
 #include<cmath>

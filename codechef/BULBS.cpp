@@ -45,12 +45,12 @@ void solve()
     if(count0!=0) vr.push_back(count0);
     sort(vr.begin(),vr.end(),greater<int>());
     int idx=0;
-    while(k>0)
+    while(k>0 && (a!=0 || b!=0 || vr[vr.size()-1]!=0))
     {
         if(a>0 && a>=b && a>=vr[idx])
-            k--,a=0;
-        else if(b>0 && b>=a && b>vr[idx])
-            k--,b=0;
+        {    k--;a=0;}
+        else if(b>0 && b>=a && b>=vr[idx])
+        {   k--;b=0;}
         else if(idx<vr.size() && vr[idx]>a && vr[idx]>b)
         {
             vr[idx]=0;
