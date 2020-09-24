@@ -3,35 +3,40 @@
 #include<cmath>
 #include<algorithm>
 #include<string.h>
-#define mod 1000000007
+# define mod 1000000007
 using namespace std;
 typedef long long int lli;
 
 void solve()
 {
     //write your code here
-    int n,k;
-    cin >> n >> k;
+    int n,q;
+    cin >> n >> q;
     vector<lli>arr(n);
     for(int i=0;i<n;i++)
     cin >> arr[i];
-    sort(arr.begin(),arr.end());
-    if(k==0)
+    lli val=arr[0],drop=0,ans=0;
+    for(int i=1;i<n;i++)
     {
-        if(arr[0]==1)
-        cout << -1 << "\n";
+        if(arr[i]>=arr[i-1])
+        {
+            if(drop!=0)
+            {ans += val - drop;
+            drop=0;
+            val=arr[i];}
+            else
+            val=arr[i];
+        }    
         else
-        cout << arr[0]-1 << "\n";
+        {
+            drop=arr[i];
+        }
     }
-    else if(k==n)
-        cout << arr[n-1] << "\n";
-    else if(arr[k-1]==arr[k])
-        cout << -1 << "\n";
+    if(drop==0)
+    ans+=val-drop;
     else
-    {
-        cout << arr[k-1] << "\n";
-    }
-    
+    ans+=val;
+    cout << ans << "\n";
 }
 
 
@@ -43,12 +48,12 @@ int main()
     #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    // int t;
-    // cin >> t;
-    // while(t--)
-    // {
+    int t;
+    cin >> t;
+    while(t--)
+    {
         solve();
-    // }
+    }
     return 0;
 }
 
