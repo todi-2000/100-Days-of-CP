@@ -33,58 +33,27 @@ void solve()
             lli sum4 =abs (arr[i][j] - val4) + abs(arr[n - i - 1][j] - val4) + abs(arr[i][m - j - 1] - val4) + abs(arr[n - i - 1][m - j - 1] - val4);
             // cout << sum1 << " " << sum2 << " " << sum3 << " " << sum4 <<"\n";
             if (sum1 <= sum2 && sum1 <= sum3 && sum1 <= sum4)
-            {
                 ans+=sum1;
-                arr[i][j]=val1;
-                arr[i][m - j - 1] = val1;
-                arr[n - i - 1][j] = val1;
-                arr[n - i - 1][m - j - 1]=val1;
-            }
             else if (sum2 <= sum1 && sum2 <= sum3 && sum2 <= sum4)
-            {
                 ans += sum2;
-                arr[i][j] = val2;
-                arr[i][m - j - 1] = val2;
-                arr[n - i - 1][j] = val2;
-                arr[n - i - 1][m - j - 1] = val2;
-            }
             else if (sum3 <= sum1 && sum3 <= sum2 && sum3 <= sum4)
-            {
                 ans += sum3;
-                arr[i][j] = val3;
-                arr[i][m - j - 1] = val3;
-                arr[n - i - 1][j] = val3;
-                arr[n - i - 1][m - j - 1] = val3;
-            }
             else if (sum4 <= sum2 && sum4 <= sum3 && sum4 <= sum1)
-            {
                 ans += sum4;
-                arr[i][j] = val4;
-                arr[i][m - j - 1] = val4;
-                arr[n - i - 1][j] = val4;
-                arr[n - i - 1][m - j - 1] = val4;
-            }
-            // for (int i = 0; i < n; i++)
-            // {
-            //     for (int j = 0; j < m; j++)
-            //         cout << arr[i][j] << " ";
-            //     cout << "\n";
-            // }
         }
-        if(n%2!=0)
+    }
+    if (n % 2 != 0)
+    {
+        for (int i = 0; i < m / 2; i++)
         {
-            cout << 1 << "\n";
-            for(int i=0;i<m/2;i++)
-            {
-                ans += abs(arr[(int)n / 2][m - i - 1] - arr[(int)n / 2][i]);
-            }
+            ans += abs(arr[(int)n / 2][m - i - 1] - arr[(int)n / 2][i]);
         }
-        if(m % 2 != 0)
+    }
+    if (m % 2 != 0)
+    {
+        for (int i = 0; i < n / 2; i++)
         {
-            for (int i = 0; i < n / 2; i++)
-            {
-                ans += abs(arr[n-i-1][(int)m/2]-arr[i][(int)m/2]);
-            }
+            ans += abs(arr[n - i - 1][(int)m / 2] - arr[i][(int)m / 2]);
         }
     }
     // for(int i=0;i<n;i++)
