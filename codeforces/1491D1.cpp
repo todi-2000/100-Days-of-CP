@@ -7,30 +7,18 @@
 using namespace std;
 typedef long long int lli;
 
-
 void solve()
 {
     //write your code here
-    lli n;
+    int n;
     cin >> n;
     vector<lli>arr(n);
-    lli pr=1;
-    for(lli i=0;i<n;i++)
-    {
+    for(int i=0;i<n;i++)
         cin >> arr[i];
-        pr*=arr[i];
-    }
-    lli prev=arr[0];
-    lli suff=pr/prev;
-    lli ans=1;
-    lli x,y;
-    while(__gcd(prev,suff)!=1 && ans<n)
-    {
-        prev*=arr[ans];
-        suff=pr/prev;
-        ans++;
-    }
-    cout << ans << "\n";
+    set<lli>s;
+    for(int i=0;i<n;i++)
+    s.insert(arr[i]);
+    cout << s.size()/2 << "\n";
 }
 
 
@@ -42,12 +30,12 @@ int main()
     #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin >> t;
-    while(t--)
-    {
+    // int t;
+    // cin >> t;
+    // while(t--)
+    // {
         solve();
-    }
+    // }
     return 0;
 }
 

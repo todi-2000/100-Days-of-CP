@@ -7,30 +7,22 @@
 using namespace std;
 typedef long long int lli;
 
-
 void solve()
 {
     //write your code here
-    lli n;
-    cin >> n;
-    vector<lli>arr(n);
-    lli pr=1;
-    for(lli i=0;i<n;i++)
+    int n,m;
+    cin >> n >> m;
+    vector<int>a(n),b(m);
+    set<int>s;
+    for(int i=0;i<n;i++){
+    cin >> a[i];
+    s.insert(a[i]);}
+    for(int j=0;j<m;j++)
     {
-        cin >> arr[i];
-        pr*=arr[i];
-    }
-    lli prev=arr[0];
-    lli suff=pr/prev;
-    lli ans=1;
-    lli x,y;
-    while(__gcd(prev,suff)!=1 && ans<n)
-    {
-        prev*=arr[ans];
-        suff=pr/prev;
-        ans++;
-    }
-    cout << ans << "\n";
+        cin >> b[j];
+        s.insert(b[j]);}
+    cout << s.size() << "\n";
+
 }
 
 
