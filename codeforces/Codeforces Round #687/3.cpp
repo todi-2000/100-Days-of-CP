@@ -34,7 +34,7 @@ void solve()
         ans+=x;
     }
     // cout << ans << " ";
-    for(lli i=0;i<p;i++)
+    for(lli i=0;i<n-p;i++)
     {
         lli val=0;
         val+=(y*(i+1));
