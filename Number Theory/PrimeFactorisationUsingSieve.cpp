@@ -7,34 +7,38 @@
 using namespace std;
 typedef long long int lli;
 
+vector<lli>arr(1000001);
 
-bool palindrome(int num)
+void seive()
 {
-    int rev = 0, val;
-    val = num;
-    while (num > 0)
+    int maxN=1000000;
+    for(int i=1;i<=maxN;i++)
+    arr[i]=-1;
+    arr[0]=1,arr[1]=1;
+    for(int i=2;i<=maxN;i++)
     {
-        rev = rev * 10 + num % 10;
-        num = num / 10;
+        if(arr[i]==-1)
+        {
+            for(int j=i;j<=maxN;j+=i)
+            {
+                if(arr[j]==-1)
+                arr[j]=i;
+            }
+        }
     }
-    if (val == rev)
-        return true;
-    else
-        return false;
 }
 
 void solve()
 {
-    //write your code here
-    int n;
-    cin >> n;
-    vector<int>arr(n);
-    for(int i=0;i<n;i++)
-    cin >> arr[i];
-    if(n%2==0)
-    {
-        if(palindrome)
-    }
+   //write your code here
+   int n;
+   cin >> n;
+   while(n!=1)
+   {
+        cout << arr[n] << " ";
+        n/=arr[n];
+   }
+   cout << "\n";
 }
 
 
@@ -48,6 +52,7 @@ int main()
     cin.tie(NULL);
     int t;
     cin >> t;
+    seive();
     while(t--)
     {
         solve();
