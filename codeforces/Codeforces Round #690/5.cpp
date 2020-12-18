@@ -7,6 +7,24 @@
 using namespace std;
 typedef long long int lli;
 
+lli C(lli n, lli r)
+{
+    if(n<r)
+    {
+        return 0;
+    }
+    if (r > n - r)
+        r = n - r;
+    long long ans = 1;
+    int i;
+    for (i = 1; i <= r; i++)
+    {
+        ans *= n - r + i;
+        ans /= i;
+    }
+    return ans;
+}
+
 void solve()
 {
    //write your code here
@@ -19,21 +37,14 @@ void solve()
        cin>> arr[i];
        _map[arr[i]]++;
    }
+   lli ma=*max_element(arr.begin(),arr.end());
    lli ans=0;
-   for(int i=1;i<=n-2;i++)
+   for(int i=1;i<=ma;i++)
    {
-       lli tc=_map[i]+_map[i+1]+_map[i+2];
-       lli two = _map[i+1] + _map[i+2];
-       if(tc>=3)
-       {
-           lli val=((tc*(tc-1)*(tc-2))/6);
-           ans+=val;
-       }
-       if(two>=3)
-       {
-           lli val = ((two * (two - 1) * (two - 2)) / 6);
-           ans -= val;
-       }
+       lli fcount=_map[i];
+       lli scount = _map[i+1]+_map[i+2];
+    //    cout << ans << " ";
+       ans += C(fcount, 3) + (C(fcount, 2) * C(scount, 1)) + (C(fcount, 1) * C(scount, 2));
    }
    cout << ans << "\n";
 }

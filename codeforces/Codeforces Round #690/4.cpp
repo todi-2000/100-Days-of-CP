@@ -8,33 +8,58 @@ using namespace std;
 typedef long long int lli;
 
 
-bool palindrome(int num)
-{
-    int rev = 0, val;
-    val = num;
-    while (num > 0)
-    {
-        rev = rev * 10 + num % 10;
-        num = num / 10;
-    }
-    if (val == rev)
-        return true;
-    else
-        return false;
-}
-
 void solve()
 {
     //write your code here
     int n;
     cin >> n;
     vector<int>arr(n);
+    int sum=0;
     for(int i=0;i<n;i++)
-    cin >> arr[i];
-    if(n%2==0)
     {
-        if(palindrome)
+        cin >> arr[i];
+        sum+=arr[i];
     }
+    vector<int>factor;
+    for(int i=1;i<=sqrt(sum);i++)
+    {
+        if(sum%i==0)
+        {
+            factor.push_back(i);
+            if((sum/i)!=i)
+            factor.push_back(sum/i);
+        }
+    }
+    sort(factor.begin(),factor.end());
+    // for(int i=0;i<factor.size();i++)
+    // cout << factor[i] << " ";
+    // cout << "\n";
+    int ans=INT_MAX;
+    for(int i=0;i<factor.size();i++)
+    {
+        int val=sum/(factor[i]),initial=0,final=0,temp=0,count=0;
+        while(final<n)
+        {
+            temp+=arr[final];
+            if(temp==val)
+            {
+                count+=(final-initial);
+                initial=final+1;
+                temp=0;
+            }
+            else if(temp>val)
+            {
+                count=INT_MAX;
+                break;
+            }
+            final++;
+        }
+        ans=min(ans,count);
+    }
+    // if(ans==INT_MAX)
+    // cout << 0 << "\n";
+    // else
+    cout << ans << "\n";
 }
 
 
