@@ -1,0 +1,77 @@
+// Question Link:
+#include<bits/stdc++.h>
+#include<cmath>
+#include<algorithm>
+#include<string.h>
+# define mod 1000000007
+using namespace std;
+typedef long long int lli;
+
+vector<lli> seive(1000001);
+
+void etf()
+{
+    lli maxN = 1000000;
+    for (int i = 1; i <= maxN; i++)
+        seive[i] = i;
+    for (int i = 2; i <= maxN; i++)
+    {
+        if (seive[i] == i)
+        {
+            for (int j = i; j <= maxN; j += i)
+            {
+                seive[j] = (seive[j] / i) * (i - 1);
+            }
+        }
+    }
+}
+
+int getCount(int r,int n)
+{
+    return seive[n/r];
+}
+
+void solve()
+{
+    //write your code here
+    int n;
+    cin >> n;
+    lli ans=0;
+    for(int i=1;i*i<=n;i++)
+    {
+        if(n%i==0)
+        {
+            int r1=i;
+            int r2=n/i;
+            ans+=(r1*getCount(r1,n));
+            if(r1!=r2)
+            {
+                ans+=(r2*getCount(r2,n));
+            }
+        }
+    }
+    cout << ans << "\n";
+}
+
+
+int main()
+{
+    #ifndef ONLINE_JUDGE
+    freopen ("A:/c++/inputf.in", "r", stdin);
+    freopen ("A:/c++/outputf.in", "w", stdout);
+    #endif
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    etf();
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
+
+
+
+
