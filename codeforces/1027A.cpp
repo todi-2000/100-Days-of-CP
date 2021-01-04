@@ -10,35 +10,22 @@ typedef long long int lli;
 void solve()
 {
     //write your code here
-    int n;
-    string s;
+    int n;string s;
     cin >> n >> s;
-    char ch;
-    int ans = 0,val=0;
-    for(int i=1;i<n;i++)
+    int first=0,last=n-1;
+    while(first<last)
     {
-        if(s[i]!='-')
+        if(s[first]==s[last] || abs(s[first]-s[last])==2)
         {
-            ch=s[i];break;
+            first++;last--;
+        }
+        else
+        {
+            cout << "NO" << "\n";
+            return;
         }
     }
-    for(int i=0;i<n;i++)
-    {
-        if(s[i]=='-')
-        {
-            if(s[(i+1)%n]=='-') ans++;
-            else ans+=2;
-            val++;
-        }
-        else if(s[i]==ch)
-            val++;
-        else
-            val=0;
-   }
-    if(val==n)
-    cout << val << "\n";
-    else
-    cout << ans << "\n";
+    cout << "YES" << "\n";
 }
 
 

@@ -11,34 +11,16 @@ void solve()
 {
     //write your code here
     int n;
-    string s;
-    cin >> n >> s;
-    char ch;
-    int ans = 0,val=0;
-    for(int i=1;i<n;i++)
+    cin >> n;
+    vector<lli>arr(n);
+    for(int i=0;i<n;++i)
+        cin >> arr[i];
+    lli ans=0;
+    for(int i=0;i<n-1;i++)
     {
-        if(s[i]!='-')
-        {
-            ch=s[i];break;
-        }
+        ans+=max(lli(0),arr[i]-arr[i+1]);
     }
-    for(int i=0;i<n;i++)
-    {
-        if(s[i]=='-')
-        {
-            if(s[(i+1)%n]=='-') ans++;
-            else ans+=2;
-            val++;
-        }
-        else if(s[i]==ch)
-            val++;
-        else
-            val=0;
-   }
-    if(val==n)
-    cout << val << "\n";
-    else
-    cout << ans << "\n";
+    cout << ans << "\n";    
 }
 
 

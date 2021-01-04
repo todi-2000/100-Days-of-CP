@@ -10,35 +10,28 @@ typedef long long int lli;
 void solve()
 {
     //write your code here
-    int n;
-    string s;
-    cin >> n >> s;
-    char ch;
-    int ans = 0,val=0;
-    for(int i=1;i<n;i++)
+    lli a,b;
+    cin >> a >> b;
+    lli x=0,y=0;
+    while(a%2==0)
     {
-        if(s[i]!='-')
-        {
-            ch=s[i];break;
-        }
+        x++;
+        a/=2;
     }
-    for(int i=0;i<n;i++)
+    while(b%2==0)
     {
-        if(s[i]=='-')
-        {
-            if(s[(i+1)%n]=='-') ans++;
-            else ans+=2;
-            val++;
-        }
-        else if(s[i]==ch)
-            val++;
-        else
-            val=0;
-   }
-    if(val==n)
-    cout << val << "\n";
+        y++;
+        b/=2;
+    }
+    // cout << a << " " << b << " ";
+    if(a!=b)
+    {
+        cout << -1 << "\n";
+    }
     else
-    cout << ans << "\n";
+    {
+        cout << ceil(double(abs(x-y))/3) << "\n";
+    }
 }
 
 
