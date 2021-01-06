@@ -10,48 +10,80 @@ typedef long long int lli;
 void solve()
 {
     //write your code here
-    int n,num;
-    cin >> n >> num;
-    if ((n / 10) == 0)
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    vector<int>arr(n);
+    for(int i=0;i<n;i++)
     {
-        if(num%2==0)
+        arr[i] = s[i]-'0';
+    }
+    vector<bool>flag(n,0);
+    for(int j=0;j<n-1;j++)
+    {
+        if(j%2==0)
         {
-            cout << 2 << "\n";return;
+            int x=0;
+            for(int i=0;i<n;i+=2)
+            {
+                if(arr[i]%2==0 && flag[i]==0){
+                    flag[i]=1;
+                    x=1;break;
+                }
+            }
+            if(x==0)
+            {
+                for (int i = 0; i < n; i += 2)
+                {
+                    if (flag[i] == 0)
+                    {
+                        flag[i] = 1;
+                        x = 1;
+                        break;
+                    }
+                }
+            }
         }
         else
         {
-            cout << 1 << "\n";return;
+            int x = 0;
+            for (int i = 1; i < n; i += 2)
+            {
+                if (arr[i] % 2 != 0 && flag[i]==0)
+                {
+                    flag[i] = 1;
+                    x = 1;
+                    break;
+                }
+            }
+            if (x == 0)
+            {
+                for (int i = 1; i < n; i += 2)
+                {
+                    if (flag[i] == 0)
+                    {
+                        flag[i] = 1;
+                        x = 1;
+                        break;
+                    }
+                }
+            }
         }
     }
-    int r=0,b=0;
-    bool var;
-    if(n%2==0) var=true;
-    else var=false;
-    while(num>0)
+    for(int i=0;i<n;i++)
     {
-        int x=num%10;
-        if(var==true)
+        if(flag[i]==0)
         {
-            if(x%2!=0)
-            b++;
+            // cout << arr[i] << " ";
+            if(arr[i]%2)
+            cout << 1 << "\n";
+            else
+            {
+                cout << 2 << "\n";
+            } 
         }
-        else
-        {
-            if(x%2==0)
-            r++;
-        }
-        num=num/10;
-        var=!var;
     }
-    if((n-(r+b))%2==0)
-    {
-        cout << 1 << "\n";
-    }
-    else
-    {
-        cout << 2 << "\n";
-    }
-    
 }
 
 
