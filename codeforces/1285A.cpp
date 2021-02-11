@@ -10,16 +10,19 @@ typedef long long int lli;
 void solve()
 {
     //write your code here
-    int n,x;
-    cin >> n >> x;
-    int rem=n-2;
-    if(rem<=0)
+    int n; string s;
+    cin >> n >> s;
+    int l=0,r=0;
+    for(int i=0;i<n;i++)
     {
-        cout << 1 << "\n";
-        return;
+        if(s[i]=='L')
+        l++;
+        else
+        {
+            r++;
+        }
     }
-    int num=ceil((double)rem/x);
-    cout<< num+1 << "\n"; 
+    cout << r+l+1 << "\n";
 }
 
 
@@ -31,12 +34,12 @@ int main()
     #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin >> t;
-    while(t--)
-    {
+    // int t;
+    // cin >> t;
+    // while(t--)
+    // {
         solve();
-    }
+    // }
     return 0;
 }
 
