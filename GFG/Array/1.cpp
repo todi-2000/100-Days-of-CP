@@ -23,10 +23,6 @@ void solve()
 
 int main()
 {
-    #ifndef ONLINE_JUDGE
-    freopen ("A:/c++/inputf.in", "r", stdin);
-    freopen ("A:/c++/outputf.in", "w", stdout);
-    #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int t;
